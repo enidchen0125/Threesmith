@@ -2,11 +2,6 @@
 
 ## Unreleased
 
-- `model view` refuses an unknown `--only` view or non-positive `--width` with exit code 2 instead of quietly showing all views or printing NaN (#18).
-
-### Thanks
-
-- @chiragjangiir for validating `--only` and `--width` in `model view` (#23).
 ## 0.3.0
 
 The first release on npm since 0.1.0: it holds everything below, 0.2.0 included.
@@ -33,10 +28,11 @@ The first release on npm since 0.1.0: it holds everything below, 0.2.0 included.
   - `review --disable`, `ci --disable` and `fix --only` refuse an unknown rule id and suggest the closest real one (#17).
   - `threesmith lessons` refuses an unknown `--topic` or `--verdict`, and `--verdict` without `--id` (#12).
   - `threesmith search --limit` must be a whole number of 1 or more, so `--limit abc` or `0` no longer says "No match" for a name that exists (#16).
+  - `threesmith model view` refuses an unknown `--only` view and a non-positive or non-numeric `--width`, instead of showing all views or printing `NaN m` (#18).
 
 ### Thanks
 
-- @chiragjangiir for the rule-id check in `review`, `ci` and `fix` (#20) and the `search --limit` check (#19), their first contributions to Threesmith.
+- @chiragjangiir for the rule-id check in `review`, `ci` and `fix` (#20) and the `search --limit` check (#19) and the `model view` option checks (#23); #20 and #19 were their first contributions to Threesmith.
 - @bfs2021 for the stricter `lessons` options (#13).
 
 ## 0.2.0 (not published on npm; ships in 0.3.0)
