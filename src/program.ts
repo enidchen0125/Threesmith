@@ -449,7 +449,17 @@ export function buildProgram(): Command {
     .argument("<file>")
     .option("--only <view>", "front | side | top")
     .option("--width <n>", "characters per view")
-    .action((file: string, o: { only?: "front" | "side" | "top"; width?: string }) => out(viewModel(file, { ...(o.only ? { only: o.only } : {}), ...(o.width ? { width: Number(o.width) } : {}) })));
+    .action((file: string, o: { only?: string; width?: string }) => {
+      let only: "front" | "side" | "top" | undefined;
+      if (o.only !== undefined) {
+        if (o.only !== "front" && o.only !== "side" && o.only !== "top") {
+          throw new Error(`--only must be front, side or top (got "${o.only}")`);
+        }
+        only = o.only;
+      }
+      const width = o.width !== undefined ? positiveInt("--width", o.width) : undefined;
+      out(viewModel(file, { ...(only ? { only } : {}), ...(width !== undefined ? { width } : {}) }));
+    });
   model
     .command("lint")
     .description("Score a model for the web; --archetype also checks it is what it should be")

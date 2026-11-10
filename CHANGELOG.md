@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- `model view` refuses an unknown `--only` view or non-positive `--width` with exit code 2 instead of quietly showing all views or printing NaN (#18).
+
+### Thanks
+
+- @chiragjangiir for validating `--only` and `--width` in `model view` (#23).
 ## 0.3.0
 
 The first release on npm since 0.1.0: it holds everything below, 0.2.0 included.
